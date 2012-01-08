@@ -1,0 +1,39 @@
+<<StartConsonants
+m	n	ŋ	p	t	k
+pʰ	tʰ	kʰ	pʼ	tʼ	kʼ
+s̺	s̻	x	h	r
+<<EndConsonants
+m	n	ŋ	p	t	k
+pʰ	tʰ	kʰ	pʼ	tʼ	kʼ
+s̺	s̻	x	r
+<<Vowels
+i	i	y	y	u	u	e	e	ø	ø	o	o	a	a
+ii	yy	uu	ee	øø	oo	aa
+iy	ie	iø	ia	iu	io	yø	yu	yo	ei	eø	eu
+eo	øi	øy	øu	øo	ai	au	ui	ue	ua	oi	ou
+<<Assimilations
+n.m	m.m
+ŋ.m	m.m
+m.n	n.n
+ŋ.n	n.n	
+m.ŋ	ŋ.ŋ	
+n.ŋ	ŋ.ŋ	
+n.k	ŋ.k	
+n.p	m.p	
+ŋ.p	m.p	
+t.p	p.p	
+k.p	p.p	
+p.t	t.t	
+k.t	t.t	
+p.k	k.k	
+t.k	k.k
+<<SyllableOrder
+V
+VV
+VC
+CVC
+CVVC
+VVC
+
+C'VV'C'
+<<End
