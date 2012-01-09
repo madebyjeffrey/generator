@@ -37,8 +37,8 @@ bool loadDataFile(const std::string &filename)
     size_t sectionEndConsonants = checksum("<<EndConsonants");
     size_t sectionVowels = checksum("<<Vowels");
     size_t sectionAssimilations = checksum("<<Assimilations");
-    size_t sectionSyllableOrder = checksum("<<SyllableOrder");
-    size_t sectionEnd = checksum("<<End");
+    //    size_t sectionSyllableOrder = checksum("<<SyllableOrder");
+    //    size_t sectionEnd = checksum("<<End");
 
     if (input.is_open())
     {
@@ -59,6 +59,7 @@ bool loadDataFile(const std::string &filename)
                 boost::tokenizer<boost::char_separator<char>> tokens(inputSet, sep);
                 
                 std::copy(begin(tokens), end(tokens), std::back_inserter(startConsonants));
+                std::cout << "Start Consonants found: " << startConsonants.size() << std::endl;
             }
             else if (section == sectionEndConsonants)
             {
@@ -71,6 +72,7 @@ bool loadDataFile(const std::string &filename)
                 boost::tokenizer<boost::char_separator<char>> tokens(inputSet, sep);
                 
                 std::copy(begin(tokens), end(tokens), std::back_inserter(endConsonants));
+                std::cout << "End Consonants found: " << endConsonants.size() << std::endl;
             }
             else if (section == sectionVowels)
             {
@@ -83,10 +85,11 @@ bool loadDataFile(const std::string &filename)
                 boost::tokenizer<boost::char_separator<char>> tokens(inputSet, sep);
                 
                 std::copy(begin(tokens), end(tokens), std::back_inserter(vowels));
+                std::cout << "Vowels found: " << vowels.size() << std::endl;
             }
             else if (section == sectionAssimilations)
             {
-                std::cout << "Section Vowels" << std::endl;
+                std::cout << "Section Assimilations" << std::endl;
                 std::string inputSet;
                 std::getline(input, inputSet, '<');
                 input.putback('<');
@@ -96,14 +99,22 @@ bool loadDataFile(const std::string &filename)
 
                 for (auto i = begin(tokens); i < end(tokens); i++)
                 {
-                    auto first = *i; 
-                    auto second =
+                    // verify we have both first and last
+                    auto first = *i++; 
+                    if (i != end(tokens))
+                    {   // verify it is good
+                        auto second = *i;
+                        assimilations[first] = second;
+                    }
+                    else break;
                 }
+                std::cout << "Assimilations found: " << assimilations.size() << std::endl;
             }
             else
             {
                 std::cout << "End of Input" << std::endl;
             }
+        }
     }
     else {
         std::cout << "File not open." << std::endl;
